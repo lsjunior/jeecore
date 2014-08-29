@@ -10,11 +10,16 @@ public class UserPrincipal implements Principal, Serializable {
 
 	private static final long	serialVersionUID	= Version.VERSION;
 
-	private UserSupport				user;
+	private UserSupport			user;
 
 	private String				authorization;
 
 	private String				token;
+
+	public UserPrincipal(final UserSupport user) {
+		super();
+		this.user = user;
+	}
 
 	public UserPrincipal(final UserSupport user, final String authorization, final String token) {
 		super();

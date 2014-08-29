@@ -1,4 +1,4 @@
-package br.net.woodstock.jee7core.util;
+package br.net.woodstock.jee7core.security.util;
 
 import br.net.woodstock.rockframework.security.digest.PasswordEncoder;
 import br.net.woodstock.rockframework.security.digest.util.PasswordEncoders;

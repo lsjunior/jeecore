@@ -1,18 +1,15 @@
 package br.net.woodstock.jee7core.web.security;
 
-import javax.ejb.EJB;
 import javax.servlet.ServletContext;
 
 import org.apache.shiro.mgt.AuthorizingSecurityManager;
+import org.apache.shiro.realm.Realm;
 import org.apache.shiro.web.env.EnvironmentLoaderListener;
 import org.apache.shiro.web.env.WebEnvironment;
 
-public class JEE7CoreEnvironmentLoaderListener extends EnvironmentLoaderListener {
+public abstract class AbstractEnvironmentLoaderListener extends EnvironmentLoaderListener {
 
-	@EJB
-	private AbstractAuthorizingRealm	realm;
-
-	public JEE7CoreEnvironmentLoaderListener() {
+	public AbstractEnvironmentLoaderListener() {
 		super();
 	}
 
@@ -20,8 +17,10 @@ public class JEE7CoreEnvironmentLoaderListener extends EnvironmentLoaderListener
 	protected WebEnvironment createEnvironment(final ServletContext sc) {
 		WebEnvironment environment = super.createEnvironment(sc);
 		AuthorizingSecurityManager securityManager = (AuthorizingSecurityManager) environment.getSecurityManager();
-		securityManager.getRealms().add(this.realm);
+		securityManager.getRealms().add(this.getRealm());
 		return environment;
 	}
+
+	public abstract Realm getRealm();
 
 }
