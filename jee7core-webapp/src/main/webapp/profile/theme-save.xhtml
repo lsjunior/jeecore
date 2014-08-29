@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui" template="/templates/default.xhtml">
+	<ui:param name="title" value="#{messages['label.theme']}" />
+	<ui:param name="path" value="/#{messages['label.profile']}/#{messages['label.theme']}" />
+	<ui:define name="content">
+		<h:form>
+			<f:event listener="#{themeAction.onPreRenderView(themeForm)}" type="preRenderView" />
+			<p:panel header="#{messages['label.theme']}" style="width: 300px; margin: auto;">
+				<table style="width: 100%;">
+					<tr>
+						<td style="width: 40%;"><h:outputText value="#{messages['label.theme']}" /> : </td>
+						<td style="width: 60%;">
+							<p:selectOneMenu id="theme" value="#{themeForm.theme}" style="width: 120px;">
+								<f:selectItems value="#{themeForm.themeList}" />
+								<f:ajax />
+							</p:selectOneMenu>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" style="text-align: center;">
+							<p:commandButton value="#{messages['label.update']}" action="#{themeAction.save(themeForm)}" ajax="false" />
+						</td>
+					</tr>
+				</table>					
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>

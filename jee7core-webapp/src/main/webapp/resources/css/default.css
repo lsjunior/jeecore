@@ -1,0 +1,49 @@
+body {
+	font-size: 11px !important;
+	font-style: normal;
+	font-weight: normal;
+	margin: 0px;
+	padding: 0px;
+}
+
+header {
+	margin: auto;
+	width: 770px;
+}
+
+aside {
+	background: rgb(255,255,255) !important;
+	height: auto !important; /* IE6 Hack */
+	height: 440px;
+	margin: auto;
+	min-height: 440px;
+	width: 770px;
+}
+
+footer {
+	margin: auto;
+	text-align: center;
+	width: 770px;
+}
+
+a:active,a:visited,a:link {
+	font-weight: bolder;
+	text-decoration: none;
+}
+
+a:hover {
+	font-weight: bolder;
+	text-decoration: none;
+}
+
+.ui-widget {
+	font-size: 11px !important;
+}
+
+.ui-dialog-title {
+	font-size: 11px !important;
+}
+
+.ui-tree .ui-treenode-label.ui-state-hover, .ui-tree .ui-treenode-label.ui-state-highlight {
+	font-weight: bold !important;
+}
