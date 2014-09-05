@@ -22,6 +22,12 @@ public class JEE7CoreFilter<T extends Identifiable<K>, K extends Serializable> e
 		super();
 	}
 
+	public void reset() {
+		this.setFilter(null);
+		this.setSelectedId(null);
+		this.setDataModel(null);
+	}
+
 	public String getFilter() {
 		return this.filter;
 	}

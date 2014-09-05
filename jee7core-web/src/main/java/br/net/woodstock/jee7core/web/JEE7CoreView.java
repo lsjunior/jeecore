@@ -15,11 +15,15 @@ public abstract class JEE7CoreView<T extends Identifiable<K>, K extends Serializ
 		super();
 	}
 
+	public void reset() {
+		this.setSelected(null);
+	}
+
 	public T getSelected() {
 		return this.selected;
 	}
 
-	public void setSelection(final T selected) {
+	public void setSelected(final T selected) {
 		this.selected = selected;
 	}
 

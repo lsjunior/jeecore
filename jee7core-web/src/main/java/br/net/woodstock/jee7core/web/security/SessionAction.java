@@ -28,6 +28,10 @@ public class SessionAction extends JEE7CoreAction {
 		return SecurityUtils.getCurrentUserId();
 	}
 
+	public String getCurrentUserLogin() {
+		return SecurityUtils.getCurrentUserLogin();
+	}
+
 	public String getCurrentUserEmail() {
 		return SecurityUtils.getCurrentUserEmail();
 	}

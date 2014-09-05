@@ -20,6 +20,8 @@ public abstract class JEE7CoreAction extends JEE7CoreWebObject {
 
 	public static final String	FORM_ATTRIBUTE		= "form";
 
+	public static final String	VIEW_ATTRIBUTE		= "view";
+
 	private static final long	serialVersionUID	= Version.VERSION;
 
 	public JEE7CoreAction() {

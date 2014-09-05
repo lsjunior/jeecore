@@ -29,6 +29,14 @@ public abstract class SecurityUtils {
 		}
 		return null;
 	}
+	
+	public static String getCurrentUserLogin() {
+		UserSupport user = SecurityUtils.getCurrentUser();
+		if (user != null) {
+			return user.getLogin();
+		}
+		return null;
+	}
 
 	public static String getCurrentUserEmail() {
 		UserSupport user = SecurityUtils.getCurrentUser();
