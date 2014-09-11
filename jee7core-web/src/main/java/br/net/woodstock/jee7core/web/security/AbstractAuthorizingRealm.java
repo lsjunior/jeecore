@@ -18,22 +18,34 @@ public abstract class AbstractAuthorizingRealm extends AbstractAuthorizer implem
 
 	@Override
 	public AuthenticationInfo getAuthenticationInfo(final AuthenticationToken authenticationToken) {
-		UsernamePasswordToken usernamePasswordToken = (UsernamePasswordToken) authenticationToken;
-		String username = usernamePasswordToken.getUsername();
-		char[] password = usernamePasswordToken.getPassword();
+		if (authenticationToken instanceof UsernamePasswordToken) {
+			UsernamePasswordToken usernamePasswordToken = (UsernamePasswordToken) authenticationToken;
+			String username = usernamePasswordToken.getUsername();
+			char[] password = usernamePasswordToken.getPassword();
 
-		if ((Conditions.isNotEmpty(username)) && (Conditions.isNotEmpty(password))) {
-			return this.getAuthenticationInfo(username, new String(password));
+			if ((Conditions.isNotEmpty(username)) && (Conditions.isNotEmpty(password))) {
+				return this.getAuthenticationInfoByUsernamePassword(username, new String(password));
+			}
+		} else if (authenticationToken instanceof CertificateToken) {
+			CertificateToken certificateToken = (CertificateToken) authenticationToken;
+			String key = certificateToken.getKey();
+			String signature = certificateToken.getSignature();
+
+			if ((Conditions.isNotEmpty(key)) && (Conditions.isNotEmpty(signature))) {
+				return this.getAuthenticationInfoByCertificate(key, new String(signature));
+			}
 		}
 
 		return null;
 	}
 
-	protected abstract AuthenticationInfo getAuthenticationInfo(final String username, final String password);
+	protected abstract AuthenticationInfo getAuthenticationInfoByUsernamePassword(final String username, final String password);
+
+	protected abstract AuthenticationInfo getAuthenticationInfoByCertificate(final String key, final String signature);
 
 	@Override
 	public boolean supports(final AuthenticationToken token) {
-		if (token instanceof UsernamePasswordToken) {
+		if ((token instanceof UsernamePasswordToken) || (token instanceof CertificateToken)) {
 			return true;
 		}
 		return false;
