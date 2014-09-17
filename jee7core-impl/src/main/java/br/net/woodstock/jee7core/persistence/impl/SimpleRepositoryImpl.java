@@ -56,7 +56,7 @@ public class SimpleRepositoryImpl extends AbstractJPARepository implements Simpl
 
 	@Override
 	@TransactionAttribute(TransactionAttributeType.SUPPORTS)
-	public ORMResult getCollection(final ORMFilter filter) {
+	public <E> ORMResult<E> getCollection(final ORMFilter filter) {
 		return super.getCollection(filter);
 	}
 

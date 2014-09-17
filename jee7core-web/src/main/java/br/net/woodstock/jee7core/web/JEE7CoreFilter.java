@@ -8,15 +8,15 @@ import br.net.woodstock.rockframework.web.faces.primefaces.PrimeFacesDataModel;
 
 public class JEE7CoreFilter<T extends Identifiable<K>, K extends Serializable> extends JEE7CoreWebObject {
 
-	public static final int			PAGE_SIZE			= 10;
+	public static final int				PAGE_SIZE			= 10;
 
-	private static final long		serialVersionUID	= Version.VERSION;
+	private static final long			serialVersionUID	= Version.VERSION;
 
-	private String					filter;
+	private String						filter;
 
-	private K						selectedId;
+	private K							selectedId;
 
-	private PrimeFacesDataModel<T>	dataModel;
+	private PrimeFacesDataModel<T, K>	dataModel;
 
 	public JEE7CoreFilter() {
 		super();
@@ -44,11 +44,11 @@ public class JEE7CoreFilter<T extends Identifiable<K>, K extends Serializable> e
 		this.selectedId = selectedId;
 	}
 
-	public PrimeFacesDataModel<T> getDataModel() {
+	public PrimeFacesDataModel<T, K> getDataModel() {
 		return this.dataModel;
 	}
 
-	public void setDataModel(final PrimeFacesDataModel<T> dataModel) {
+	public void setDataModel(final PrimeFacesDataModel<T, K> dataModel) {
 		this.dataModel = dataModel;
 	}
 
