@@ -46,8 +46,17 @@ public class ThemeAction extends JEE7CoreAction {
 		HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
 		HttpSession session = request.getSession();
 		String theme = (String) session.getAttribute(ThemeAction.THEME_ATTRIBUTE);
+
 		if (Conditions.isEmpty(theme)) {
 			theme = SecurityUtils.getCurrentUserTheme();
+
+			if (Conditions.isNotEmpty(theme)) {
+				ThemeType themeType = ThemeType.typeOf(theme);
+				if (themeType == null) {
+					theme = null;
+				}
+			}
+
 			if (Conditions.isEmpty(theme)) {
 				theme = ThemeAction.DEFAULT_THEME.getType();
 
