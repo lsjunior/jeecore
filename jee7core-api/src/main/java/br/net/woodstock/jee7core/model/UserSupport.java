@@ -10,6 +10,8 @@ public interface UserSupport {
 
 	String getEmail();
 
+	String getTheme();
+
 	String[] getRoles();
 
 }

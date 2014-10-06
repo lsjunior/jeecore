@@ -1,1 +1,9 @@
-
+body {
+	background-color: #6B8FB2 !important;
+}
+aside {
+	background-color: #EBF5FF !important;
+}
+footer {
+	color: #fff;
+}

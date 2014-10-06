@@ -29,7 +29,7 @@ public abstract class SecurityUtils {
 		}
 		return null;
 	}
-	
+
 	public static String getCurrentUserLogin() {
 		UserSupport user = SecurityUtils.getCurrentUser();
 		if (user != null) {
@@ -50,6 +50,14 @@ public abstract class SecurityUtils {
 		UserSupport user = SecurityUtils.getCurrentUser();
 		if (user != null) {
 			return user.getName();
+		}
+		return null;
+	}
+
+	public static String getCurrentUserTheme() {
+		UserSupport user = SecurityUtils.getCurrentUser();
+		if (user != null) {
+			return user.getTheme();
 		}
 		return null;
 	}
