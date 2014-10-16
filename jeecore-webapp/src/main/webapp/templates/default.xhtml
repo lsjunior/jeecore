@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"xmlns:p="http://primefaces.org/ui">
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>
+			#{title}
+		</title>
+		<h:outputStylesheet name="default.css" library="css" />
+	</h:head>
+	<h:body>
+		<header class="ui-widget">
+			<ui:insert name="header">
+				<h:form id="_formHeader">
+					<ui:fragment rendered="#{sessionAction.loggedIn}">
+						<p:toolbar>
+							<f:facet name="left">
+								<ui:insert name="menu"></ui:insert>
+								<ui:fragment rendered="#{not empty path}">
+									<ui:repeat var="p" value="#{path.split('/')}">
+										<ui:fragment rendered="#{not empty p}">
+											<span class="ui-separator">
+												<span class="ui-icon ui-icon-triangle-1-e" />
+											</span>
+											<h:outputText value="#{p}" />
+										</ui:fragment>
+									</ui:repeat>
+								</ui:fragment>									
+							</f:facet>
+							<f:facet name="right">
+								<h:outputText value="#{sessionAction.currentUserEmail}" styleClass="ui-menuitem-text" style="font-size: 9px;" />
+								<br />
+								<h:outputText value="#{sessionAction.currentUserName}" styleClass="ui-menuitem-text" style="font-size: 9px;" />
+							</f:facet>
+						</p:toolbar>
+					</ui:fragment>
+				</h:form>
+			</ui:insert>
+		</header>
+		
+		<aside class="ui-widget ui-corner-all ui-state-default">
+			<br />
+			<p:dialog id="globalMessagesPopup" header="#{messages['label.message']}" width="300" height="200" modal="true" resizeable="false" visible="true" rendered="#{not empty facesContext.messageList}">
+				<p:messages />
+			</p:dialog>
+			<ui:insert name="content"></ui:insert>
+			<br />
+		</aside>
+	
+		<footer class="ui-widget">
+			<ui:insert name="footer">
+				<h:form id="formFooter">
+					<div style="text-align: center;">Woodstock Tecnologia</div>
+				</h:form>
+			</ui:insert>
+		</footer>
+	</h:body>
+</html>
